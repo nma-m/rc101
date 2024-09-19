@@ -1,0 +1,67 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --black: #333;
+  --dark-gray: #666;
+  --med-gray: #ddd;
+  --light-gray: #f7f7f7;
+  --white: #fff;
+  --blue: darkcyan;
+  --orange: #f80;
+  --red: crimson;
+
+  color: var(--black);
+  background-color: var(--white);
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: none;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  font-family: "Cousine", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--light-gray);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color:var(--orange);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--orange);
+}

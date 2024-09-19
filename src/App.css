@@ -1,0 +1,217 @@
+#root {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin: 3.2rem 0;
+}
+
+.app-name {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-family: "Audiowide", sans-serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.app-subtitle {
+  font-family: "Audiowide", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0 auto;
+}
+
+.chart-header {
+  display: flex;
+  gap: 5px;
+}
+
+.chart-name-input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.chart-name {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.pattern {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pattern-header {
+  display: flex;
+  gap: 5px;
+}
+
+.pattern-name-input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.instrument {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.instrument-name-input {
+  width: 4rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  text-align: right;
+  font-family: "Cousine", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--black);
+}
+
+.beats {
+  display: flex;
+  flex-grow: 1;
+  gap: 5px;
+}
+
+.beat {
+  width: 30px;
+  height: 40px;
+  border: 1px solid var(--dark-gray);
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+
+.beat.white {
+  background-color: var(--white);
+}
+
+.beat.gray {
+  background-color: var(--med-gray);
+}
+
+.beat.triggered {
+  background-color: var(--blue);
+}
+
+.pattern-notes-label {
+  margin: 0;
+  padding: 0;
+  font-family: "Cousine", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.pattern-notes-input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  resize: vertical;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  outline: none;
+}
+
+.pattern-notes-text {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.clear-chart-button,
+.delete-pattern-button,
+.delete-instrument-button {
+  color: var(--red);
+}
+
+.printable {
+  display: none;
+}
+
+@media print {
+  .printable {
+    display: block;
+  }
+
+  .no-print {
+    display: none;
+  }
+
+  .App {
+    margin: 0;
+  }
+
+  .app-name {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .pattern-name {
+    width: fit-content;
+    padding: .25rem .5rem;
+    color: var(--white);
+    background-color: var(--dark-gray);
+    border-radius: 5px;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    font-optical-sizing: auto;
+    font-weight: 250;
+    font-style: normal;
+  }
+}
