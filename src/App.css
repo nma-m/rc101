@@ -187,6 +187,10 @@
 }
 
 @media print {
+  @page {
+    margin: .5in;
+  }
+  
   .printable {
     display: block;
   }
