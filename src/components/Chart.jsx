@@ -7,11 +7,12 @@ const Chart = () => {
     {
       title: 'Pattern 1',
       notes: '',
+      patternLength: 16,
       instruments: [
-        { name: 'kick', beats: new Array(16).fill(false) },
-        { name: 'snare', beats: new Array(16).fill(false) },
-        { name: 'ch', beats: new Array(16).fill(false) },
-        { name: 'oh', beats: new Array(16).fill(false) },
+        { name: 'kick', beats: new Array(32).fill(false) },
+        { name: 'snare', beats: new Array(32).fill(false) },
+        { name: 'ch', beats: new Array(32).fill(false) },
+        { name: 'oh', beats: new Array(32).fill(false) },
       ],
     },
   ]);
@@ -21,9 +22,10 @@ const Chart = () => {
     const newPattern = {
       title: `Pattern ${patterns.length + 1}`,
       notes: '',
+      patternLength: 16,
       instruments: lastPattern.instruments.map((instrument) => ({
         ...instrument,
-        beats: new Array(16).fill(false),
+        beats: new Array(32).fill(false),
       })),
     };
     setPatterns([...patterns, newPattern]);
@@ -55,7 +57,7 @@ const Chart = () => {
     const newPatterns = [...patterns];
     newPatterns[patternIndex].instruments.push({
       name: '',
-      beats: new Array(16).fill(false),
+      beats: new Array(32).fill(false),
     });
     setPatterns(newPatterns);
   };
@@ -92,16 +94,23 @@ const Chart = () => {
         {
           title: 'Pattern 1',
           notes: '',
+          patternLength: 16,
           instruments: [
-            { name: 'kick', beats: new Array(16).fill(false) },
-            { name: 'snare', beats: new Array(16).fill(false) },
-            { name: 'ch', beats: new Array(16).fill(false) },
-            { name: 'oh', beats: new Array(16).fill(false) },
+            { name: 'kick', beats: new Array(32).fill(false) },
+            { name: 'snare', beats: new Array(32).fill(false) },
+            { name: 'ch', beats: new Array(32).fill(false) },
+            { name: 'oh', beats: new Array(32).fill(false) },
           ],
         },
       ]);
     }
-  };  
+  };
+
+  const togglePatternLength = (index) => {
+    const newPatterns = [...patterns];
+    newPatterns[index].patternLength = newPatterns[index].patternLength === 16 ? 32 : 16;
+    setPatterns(newPatterns);
+  };
 
   return (
     <div className='chart'>
@@ -119,9 +128,11 @@ const Chart = () => {
       </div>
       {patterns.map((pattern, index) => (
         <Pattern
+          key={index}
           title={pattern.title}
           notes={pattern.notes}
           instruments={pattern.instruments}
+          patternLength={pattern.patternLength}
           onRename={(newTitle) => renamePattern(index, newTitle)}
           onUpdateNotes={(newNotes) => updateNotes(index, newNotes)}
           onAddInstrument={() => addInstrument(index)}
@@ -129,6 +140,7 @@ const Chart = () => {
           onRenameInstrument={(instrumentIndex, newName) => renameInstrument(index, instrumentIndex, newName)}
           onToggleBeat={(instrumentIndex, beatIndex) => toggleBeat(index, instrumentIndex, beatIndex)}
           onDeletePattern={() => deletePattern(index)}
+          onTogglePatternLength={() => togglePatternLength(index)}
         />
       ))}
       <button onClick={addPattern} className='add-pattern no-print'>Add Pattern</button>

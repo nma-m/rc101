@@ -1,7 +1,7 @@
 import React from 'react';
 import Instrument from './Instrument';
 
-const Pattern = ({ title, notes, instruments, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern }) => {
+const Pattern = ({ title, notes, instruments, patternLength, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern, onTogglePatternLength }) => {
   return (
     <div className='pattern'>
       <div className='pattern-header'>
@@ -14,6 +14,12 @@ const Pattern = ({ title, notes, instruments, onRename, onUpdateNotes, onAddInst
           className='pattern-name-input no-print'
         />
         <button 
+          onClick={onTogglePatternLength}
+          className='toggle-length-button no-print'
+        >
+          {patternLength === 16 ? '16 beats' : '32 beats'}
+        </button>
+        <button 
           onClick={onDeletePattern}
           className='delete-pattern-button no-print'
         >
@@ -24,7 +30,7 @@ const Pattern = ({ title, notes, instruments, onRename, onUpdateNotes, onAddInst
         <Instrument
           key={index}
           name={instrument.name}
-          beats={instrument.beats}
+          beats={instrument.beats.slice(0, patternLength)}
           onToggle={(beatIndex) => onToggleBeat(index, beatIndex)}
           onRename={(newName) => onRenameInstrument(index, newName)}
           onDelete={() => onDeleteInstrument(index)}
