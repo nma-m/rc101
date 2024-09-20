@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Pattern from './Pattern';
 
 const Chart = () => {
-  const [chartName, setChartName] = useState('');
-  const [patterns, setPatterns] = useState([
+  const initChart = [
     {
       title: 'Pattern 1',
       notes: '',
@@ -15,7 +14,9 @@ const Chart = () => {
         { name: 'oh', beats: new Array(32).fill(false) },
       ],
     },
-  ]);
+  ];
+  const [chartName, setChartName] = useState('');
+  const [patterns, setPatterns] = useState(initChart);
 
   const addPattern = () => {
     const lastPattern = patterns[patterns.length - 1];
@@ -90,19 +91,7 @@ const Chart = () => {
   
     if (userConfirmed) {
       setChartName('Chart Name');
-      setPatterns([
-        {
-          title: 'Pattern 1',
-          notes: '',
-          patternLength: 16,
-          instruments: [
-            { name: 'kick', beats: new Array(32).fill(false) },
-            { name: 'snare', beats: new Array(32).fill(false) },
-            { name: 'ch', beats: new Array(32).fill(false) },
-            { name: 'oh', beats: new Array(32).fill(false) },
-          ],
-        },
-      ]);
+      setPatterns(initChart);
     }
   };
 
