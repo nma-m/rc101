@@ -4,7 +4,7 @@ import Pattern from './Pattern';
 const Chart = () => {
   const initChart = [
     {
-      title: 'Pattern 1',
+      title: '',
       notes: '',
       patternLength: 16,
       instruments: [
@@ -37,7 +37,7 @@ const Chart = () => {
   const addPattern = () => {
     const lastPattern = patterns[patterns.length - 1];
     const newPattern = {
-      title: `Pattern ${patterns.length + 1}`,
+      title: '',
       notes: '',
       patternLength: 16,
       instruments: lastPattern.instruments.map((instrument) => ({
@@ -134,6 +134,7 @@ const Chart = () => {
       {patterns.map((pattern, index) => (
         <Pattern
           key={index}
+          index={index}
           title={pattern.title}
           notes={pattern.notes}
           instruments={pattern.instruments}

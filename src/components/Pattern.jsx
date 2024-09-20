@@ -1,7 +1,7 @@
 import React from 'react';
 import Instrument from './Instrument';
 
-const Pattern = ({ title, notes, instruments, patternLength, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern, onTogglePatternLength }) => {
+const Pattern = ({ index, title, notes, instruments, patternLength, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern, onTogglePatternLength }) => {
   return (
     <div className='pattern'>
       <div className='pattern-header'>
@@ -12,7 +12,7 @@ const Pattern = ({ title, notes, instruments, patternLength, onRename, onUpdateN
           type='text'
           value={title}
           onChange={(e) => onRename(e.target.value)}
-          placeholder='Pattern Name'
+          placeholder={`Pattern ${index + 1}`}
           className='pattern-name-input no-print'
         />
         <button 
