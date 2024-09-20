@@ -21,7 +21,7 @@ const Pattern = ({ index, title, notes, instruments, patternLength, onRename, on
           onClick={onTogglePatternLength}
           className='toggle-length-button no-print'
         >
-          {patternLength === 16 ? '16 beats' : '32 beats'}
+          {patternLength === 16 ? '16' : '32'}
         </button>
         <button 
           onClick={onDeletePattern}
