@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pattern from './Pattern';
 
 const Chart = () => {
@@ -15,8 +15,24 @@ const Chart = () => {
       ],
     },
   ];
-  const [chartName, setChartName] = useState('');
-  const [patterns, setPatterns] = useState(initChart);
+
+  const [patterns, setPatterns] = useState(() => {
+    const currentPatterns = localStorage.getItem('currentPatterns');
+    return currentPatterns ? JSON.parse(currentPatterns) : initChart;
+  });
+
+  const [chartName, setChartName] = useState(() => {
+    const currentChartName = localStorage.getItem('currentChartName');
+    return currentChartName ? currentChartName : '';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('currentPatterns', JSON.stringify(patterns));
+  }, [patterns]);
+
+  useEffect(() => {
+    localStorage.setItem('currentChartName', chartName);
+  }, [chartName]);
 
   const addPattern = () => {
     const lastPattern = patterns[patterns.length - 1];
@@ -90,7 +106,7 @@ const Chart = () => {
     const userConfirmed = window.confirm('Are you sure you want to start over?');
   
     if (userConfirmed) {
-      setChartName('Chart Name');
+      setChartName('');
       setPatterns(initChart);
     }
   };
