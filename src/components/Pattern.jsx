@@ -5,7 +5,9 @@ const Pattern = ({ title, notes, instruments, patternLength, onRename, onUpdateN
   return (
     <div className='pattern'>
       <div className='pattern-header'>
-        <h2 className='pattern-name printable'>{title}</h2>
+        {title &&
+          <h2 className='pattern-name printable'>{title}</h2>
+        }
         <input
           type='text'
           value={title}
