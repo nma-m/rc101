@@ -14,6 +14,7 @@
 
 .app-name {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: .5rem;
   font-family: "Audiowide", sans-serif;
@@ -222,5 +223,49 @@
     font-optical-sizing: auto;
     font-weight: 250;
     font-style: normal;
+  }
+}
+
+.rotate-device-text {
+  display: none;
+  font-family: "Cousine", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media screen and (orientation: portrait) {
+  .chart {
+    display: none;
+  }
+
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .App {
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .app-name {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .rotate-device-text {
+    display: block;
+    text-align: center;
+    width: 300px;
   }
 }
