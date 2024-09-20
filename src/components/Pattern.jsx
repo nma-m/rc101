@@ -1,7 +1,7 @@
 import React from 'react';
 import Instrument from './Instrument';
 
-const Pattern = ({ index, title, notes, instruments, patternLength, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern, onTogglePatternLength }) => {
+const Pattern = ({ index, title, notes, instruments, patternLength, onRename, onUpdateNotes, onAddInstrument, onDeleteInstrument, onRenameInstrument, onToggleBeat, onDeletePattern, onTogglePatternLength, onMovePattern, onMoveInstrument }) => {
   return (
     <div className='pattern'>
       <div className='pattern-header'>
@@ -15,6 +15,8 @@ const Pattern = ({ index, title, notes, instruments, patternLength, onRename, on
           placeholder={`Pattern ${index + 1}`}
           className='pattern-name-input no-print'
         />
+        <button className='pattern-move-button no-print' onClick={() => onMovePattern(index, 'up')}>▲</button>
+        <button className='pattern-move-button no-print' onClick={() => onMovePattern(index, 'down')}>▼</button>
         <button 
           onClick={onTogglePatternLength}
           className='toggle-length-button no-print'
@@ -28,14 +30,15 @@ const Pattern = ({ index, title, notes, instruments, patternLength, onRename, on
           Del
         </button>
       </div>
-      {instruments.map((instrument, index) => (
+      {instruments.map((instrument, instrumentIndex) => (
         <Instrument
-          key={index}
+          key={instrumentIndex}
           name={instrument.name}
           beats={instrument.beats.slice(0, patternLength)}
-          onToggle={(beatIndex) => onToggleBeat(index, beatIndex)}
-          onRename={(newName) => onRenameInstrument(index, newName)}
-          onDelete={() => onDeleteInstrument(index)}
+          onToggle={(beatIndex) => onToggleBeat(instrumentIndex, beatIndex)}
+          onRename={(newName) => onRenameInstrument(instrumentIndex, newName)}
+          onDelete={() => onDeleteInstrument(instrumentIndex)}
+          onMove={(direction) => onMoveInstrument(instrumentIndex, direction)}
         />
       ))}
       <button onClick={onAddInstrument} className='add-instrument no-print'>Add Instrument</button>

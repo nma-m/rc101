@@ -108,7 +108,7 @@
   padding: 0;
   border: none;
   outline: none;
-  text-align: right;
+  text-align: center;
   font-family: "Cousine", monospace;
   font-size: 1rem;
   font-weight: 400;
@@ -140,6 +140,22 @@
 
 .beat.triggered {
   background-color: var(--blue);
+}
+
+.instrument-move-buttons {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.instrument-move-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  height: 0;
+  padding: 12px 18px;
 }
 
 .pattern-notes-label {
@@ -223,6 +239,10 @@
     font-optical-sizing: auto;
     font-weight: 250;
     font-style: normal;
+  }
+
+  .instrument-name-input {
+    text-align: right;
   }
 }
 

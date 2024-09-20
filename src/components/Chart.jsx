@@ -117,6 +117,25 @@ const Chart = () => {
     setPatterns(newPatterns);
   };
 
+  const movePattern = (index, direction) => {
+    if ((direction === 'up' && index > 0) || (direction === 'down' && index < patterns.length - 1)) {
+      const newPatterns = [...patterns];
+      const swapIndex = direction === 'up' ? index - 1 : index + 1;
+      [newPatterns[index], newPatterns[swapIndex]] = [newPatterns[swapIndex], newPatterns[index]];
+      setPatterns(newPatterns);
+    }
+  };
+
+  const moveInstrument = (patternIndex, instrumentIndex, direction) => {
+    if ((direction === 'up' && instrumentIndex > 0) || (direction === 'down' && instrumentIndex < patterns[patternIndex].instruments.length - 1)) {
+      const newPatterns = [...patterns];
+      const instruments = newPatterns[patternIndex].instruments;
+      const swapIndex = direction === 'up' ? instrumentIndex - 1 : instrumentIndex + 1;
+      [instruments[instrumentIndex], instruments[swapIndex]] = [instruments[swapIndex], instruments[instrumentIndex]];
+      setPatterns(newPatterns);
+    }
+  };
+
   return (
     <div className='chart'>
       <div className='chart-header'>
@@ -147,6 +166,8 @@ const Chart = () => {
           onToggleBeat={(instrumentIndex, beatIndex) => toggleBeat(index, instrumentIndex, beatIndex)}
           onDeletePattern={() => deletePattern(index)}
           onTogglePatternLength={() => togglePatternLength(index)}
+          onMovePattern={(index, direction) => movePattern(index, direction)}
+          onMoveInstrument={(instrumentIndex, direction) => moveInstrument(index, instrumentIndex, direction)}
         />
       ))}
       <button onClick={addPattern} className='add-pattern no-print'>Add Pattern</button>

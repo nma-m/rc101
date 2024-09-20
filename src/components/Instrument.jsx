@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Instrument = ({ name, beats, onToggle, onRename, onDelete }) => {
+const Instrument = ({ name, beats, onToggle, onRename, onDelete, onMove }) => {
   return (
     <div className='instrument'>
+      <div className='instrument-move-buttons no-print'>
+        <button className='instrument-move-button' onClick={() => onMove('up')}>▲</button>
+        <button className='instrument-move-button' onClick={() => onMove('down')}>▼</button>
+      </div>
       <input
         type='text'
         value={name}
