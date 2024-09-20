@@ -42,13 +42,13 @@ const Pattern = ({ index, title, notes, instruments, patternLength, onRename, on
         />
       ))}
       <button onClick={onAddInstrument} className='add-instrument no-print'>Add Instrument</button>
-      <label htmlFor='pattern-notes-input' className='pattern-notes-label no-print'>
+      <label htmlFor={`pattern-notes-input-${index}`} className='pattern-notes-label no-print'>
         Notes:
         <textarea
           value={notes}
           onChange={(e) => onUpdateNotes(e.target.value)}
           className='pattern-notes-input'
-          id='pattern-notes-input'
+          id={`pattern-notes-input-${index}`}
           rows={3}
         />
       </label>
